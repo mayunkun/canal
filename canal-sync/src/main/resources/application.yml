@@ -1,0 +1,44 @@
+# Tomcat
+server:
+    port: 8888
+    servlet:
+        context-path: /canal
+#    tomcat:
+#        uri-encoding: UTF-8
+#        max-threads: 1000
+#        min-spare-threads: 30
+#        max-http-header-size: 3145728
+    
+        
+#    undertow:
+#      # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+#      io-threads: 4
+#      # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+#      worker-threads: 20
+#      # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+#      # 每块buffer的空间大小,越小的空间被利用越充分
+#      buffer-size: 1024
+#      # 是否分配的直接内存
+#      direct-buffers: true
+
+# mysql
+spring:
+    #解决tomcat同时部署两个SpringBoot应用提示InstanceAlreadyExistsException
+    jmx:
+        default-domain: canal
+    # 环境 dev|test|prod
+    profiles:
+        active: dev
+    # jackson时间格式化
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+    servlet:
+        multipart:
+             max-file-size: 100MB
+             max-request-size: 100MB
+             enabled: true
+    
+#logging
+logging:
+ config: classpath:logback-spring.xml

@@ -1,0 +1,14 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.0.125:9300
+      repositories:
+        enabled: true
+
+canal: 
+    ip: 192.168.0.125
+    port: 11111
+    destination: example
+    username: 
+    password: 
